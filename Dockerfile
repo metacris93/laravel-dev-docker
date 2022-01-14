@@ -1,8 +1,6 @@
 FROM php:7.2-fpm
 # Con la version Alpine da problemas con la instalacion del composer
 # Arguments defined in docker-compose.yml
-ARG user
-ARG uid
 ARG workdir
 
 RUN apt update \
