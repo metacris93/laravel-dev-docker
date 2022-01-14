@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-  database:
-    image: mysql:8.0.27
+  db:
+    image: mysql:5.7
     container_name: ${APP_NAME}_db
     restart: unless-stopped
     environment:
@@ -10,6 +10,8 @@ services:
       - MYSQL_ROOT_PASSWORD=${SQL_ROOT_PASSWORD}
       - MYSQL_PASSWORD=${SQL_PASSWORD}
       - MYSQL_USER= ${SQL_USER}
+      - SERVICE_TAGS= dev
+      - SERVICE_NAME= mysql
     volumes:
       - spending-control-data:/var/lib/mysql
     networks:
@@ -32,7 +34,7 @@ services:
     networks:
       - spending-control-network
     depends_on:
-      - database
+      - db
       - app
 
   app:
@@ -51,7 +53,7 @@ services:
     networks:
       - spending-control-network
     depends_on:
-      - database
+      - db
 
 networks:
   spending-control-network:

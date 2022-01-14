@@ -11,6 +11,12 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('/expense_reports', 'ExpenseReportController');
+Route::get('/expense_reports/{id}/confirmDelete', 'ExpenseReportController@confirmDelete')->name('expense_reports.confirmDelete');
+//Route::resource('/expenses', 'ExpenseController');
+Route::get('/expense_reports/{expense_report}/expenses/create', 'ExpenseController@create')->name('expense.create');
+Route::post('/expense_reports/{expense_report}/expenses', 'ExpenseController@store')->name('expense.store');
