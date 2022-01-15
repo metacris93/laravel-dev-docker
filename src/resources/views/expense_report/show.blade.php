@@ -13,6 +13,11 @@
     </div>
     <div class="row">
         <div class="col">
+            <a class="btn btn-primary" href="{{route('expense_reports.confirmSendEmail', $expense_report->id)}}">Send Email</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <h3>Details</h3>
             <table class="table">
                 @foreach ($expense_report->expenses as $expense)
